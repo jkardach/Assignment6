@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D7939AA2660697700C0E110 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D7939A92660697700C0E110 /* main.cpp */; };
+		3D7939B826606E4300C0E110 /* Composer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D7939B626606E4300C0E110 /* Composer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,10 @@
 /* Begin PBXFileReference section */
 		3D7939A62660697700C0E110 /* Assignment6 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assignment6; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7939A92660697700C0E110 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3D7939B426606A9A00C0E110 /* LinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
+		3D7939B626606E4300C0E110 /* Composer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Composer.cpp; sourceTree = "<group>"; };
+		3D7939B726606E4300C0E110 /* Composer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Composer.hpp; sourceTree = "<group>"; };
+		3DE6409A266179B700DBD04E /* Node.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,10 @@
 			isa = PBXGroup;
 			children = (
 				3D7939A92660697700C0E110 /* main.cpp */,
+				3DE6409A266179B700DBD04E /* Node.hpp */,
+				3D7939B426606A9A00C0E110 /* LinkedList.hpp */,
+				3D7939B726606E4300C0E110 /* Composer.hpp */,
+				3D7939B626606E4300C0E110 /* Composer.cpp */,
 			);
 			path = Assignment6;
 			sourceTree = "<group>";
@@ -119,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D7939AA2660697700C0E110 /* main.cpp in Sources */,
+				3D7939B826606E4300C0E110 /* Composer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
