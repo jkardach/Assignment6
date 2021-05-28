@@ -15,7 +15,7 @@
 
 #include <stdio.h>
 #include <iostream>
-//#include "Node.hpp"
+#include "Node.hpp"
 
 using namespace std;
 //#include "Node.hpp"
@@ -23,14 +23,14 @@ using namespace std;
 template <class T>
 class LinkedList {
 private:
-//    Node;
-    struct Node {
-        T value;
-        struct Node* next = nullptr;
-    };
+////    Node;
+//    struct Node {
+//        T value;
+//        struct Node* next = nullptr;
+//    };
 public:
-    Node* first = nullptr;
-    Node* last = nullptr;
+    Node<T>* first = nullptr;
+    Node<T>* last = nullptr;
     // constructors/deconstructors
     LinkedList():first(nullptr), last(nullptr) { }
     
@@ -43,14 +43,14 @@ public:
             return;
         }
         // create first node, copy data over
-        first = new Node;               // create new node, first points to
+        first = new Node<T>;               // create new node, first points to
         first->value = obj.first->value;  // copy data over
-        Node* nodePtr = first;          // create new pointer, points to first
-        Node* objPtr = obj.first;       // create new pointer to obj first
+        Node<T>* nodePtr = first;          // create new pointer, points to first
+        Node<T>* objPtr = obj.first;       // create new pointer to obj first
         
         // continue this process until objPtr next points to null
         while(objPtr->next) {
-            nodePtr->next = new Node;   // create new object
+            nodePtr->next = new Node<T>;   // create new object
             nodePtr = nodePtr->next;    // increment nodePtr
             objPtr = objPtr->next;      // increment objPtr
             nodePtr->value = objPtr->value; // set value to new pointer
@@ -61,8 +61,8 @@ public:
     
     // destrutor
     ~LinkedList() {
-        Node* nodePtr = first;
-        Node* delPtr = nullptr;
+        Node<T>* nodePtr = first;
+        Node<T>* delPtr = nullptr;
         while(nodePtr) {
             delPtr = nodePtr;
             nodePtr = nodePtr->next;
@@ -74,7 +74,7 @@ public:
     
     // prints out the list
     void printList() const {
-        Node* nodePtr = first;
+        Node<T>* nodePtr = first;
         while(nodePtr) {
             cout << nodePtr->value;
             nodePtr = nodePtr->next;
@@ -83,7 +83,7 @@ public:
     }
     // adds a node to end of list
     void append(const T data) {
-        Node* newNode = new Node();
+        Node<T>* newNode = new Node<T>();
         newNode->value = data;
 
         if(!first) {
@@ -99,7 +99,7 @@ public:
     
     // adds a node to first of list
     void prepend(const T data) {
-        Node* newNode = new Node();
+        Node<T>* newNode = new Node<T>();
         newNode->value = data;
         if(first) {
             newNode->next = first;
@@ -114,7 +114,7 @@ public:
     // returns true if removes first
     bool removeFront() {
         if(!first) { return false; }  // if empty list, return
-        Node* delPtr = first;
+        Node<T>* delPtr = first;
         if(!first->next) {
             // only single node in list
             first = first->next;
@@ -129,7 +129,7 @@ public:
     
     // inserts node in correct order (acending order)
     void insert(const T data)  {
-        Node* newNode = new Node();
+        Node<T>* newNode = new Node<T>();
         newNode->value = data;
         if(!first) {
             // no nodes, make new node first and last
@@ -138,8 +138,8 @@ public:
             return;
         }
         // one or more nodes
-        Node* nodePtr = first;          // nodePtr at beginning of list
-        Node* previousNode = nullptr;   // previous node to nullptr
+        Node<T>* nodePtr = first;          // nodePtr at beginning of list
+        Node<T>* previousNode = nullptr;   // previous node to nullptr
         // skip all nodes whose value is less than num.
         while(nodePtr != nullptr && nodePtr->value < data) {
             previousNode = nodePtr;
@@ -163,7 +163,7 @@ public:
     // true if removes node of value data
     bool remove(const T data) {
         if(!first) { return false;}   // no nodes, return
-        Node* nodePtr = first;
+        Node<T>* nodePtr = first;
         if(first->value == data) {
             // see if this is the first guy
             nodePtr = first->next;
@@ -172,7 +172,7 @@ public:
             return true;
         }
         // else find and delete node
-        Node* previousNode = nullptr;
+        Node<T>* previousNode = nullptr;
         
         while(nodePtr != nullptr && nodePtr->value != data) {
             previousNode = nodePtr;
@@ -198,7 +198,7 @@ public:
         }
         // more than one node now
         bool match = false;
-        Node* nodePtr = first;
+        Node<T>* nodePtr = first;
         while(nodePtr) {
             
             if(nodePtr->value == data) {

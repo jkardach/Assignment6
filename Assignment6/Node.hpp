@@ -9,13 +9,11 @@
 #define Node_hpp
 
 #include <stdio.h>
-template <class S>
+template <class T>
 class Node {
 public:
-    struct ListNode {
-        S value;
-        struct ListNode *next = nullptr;
-    };
+    T value;
+    Node* next = nullptr;
 };
 
 #endif /* Node_hpp */

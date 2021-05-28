@@ -33,7 +33,7 @@ int main(int argc, const char * argv[]) {
         getline(inFile, name, ','); // read the name, ',' is delimiter
         inFile >> year;             // read the year
         Composer composer = Composer(name, year); // create composer object
-        list.append(composer);      // append composer to linked list
+        list.insert(composer);      // append composer to linked list
         getline(inFile, name);      // read rest of line (CR/LF)
     }
     inFile.close();     // close the input file
@@ -78,11 +78,11 @@ char displayMenu() {
         cout << "Enter 's' to search, 'r' to remove,";
         cout << " 'd' to display, or 'e' to exit: " << flush;
         cin >> p;
-        cin.ignore();
+        cin.ignore(INT_MAX, '\n');  // clears the buffer
         cout << endl;
         done = p == 's' || p == 'r' || p == 'd' || p == 'e';
         if(!done) {
-            cout << "do not recognize the selection " << p << "!" << endl;
+            cout << "Do not recognize the selection " << p << "!" << endl;
         }
     } while(!done);
     return p;
@@ -132,225 +132,54 @@ void searchRec(LinkedList<Composer> &list) {
 /*
  Sample Run
  
+
  Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: d
 
 
  Displaying Composer List
 
+ Claudio Monteverdi - 1643
+ Henry Purcell - 1695
+ Antonio Vivaldi - 1741
+ Johann Sebastian Bach - 1750
+ George Frideric Handel - 1759
+ Wolfgang Amadeus Mozart - 1791
+ Joseph Haydn - 1809
  Ludwig van Beethoven - 1827
- Wolfgang Amadeus Mozart - 1791
- Johann Sebastian Bach - 1750
- Frederic Chopin - 1849
- George Frideric Handel - 1759
- Franz Liszt - 1886
- Johannes Brahms - 1897
- Igor Stravinsky - 1971
- Pyotr Ilyich Tchaikovsky - 1893
- Claude Debussy - 1918
- Joseph Haydn - 1809
- Gustav Mahler - 1911
- Sergei Prokofiev - 1953
- Richard Wagner - 1883
- Giacomo Puccini - 1924
- Felix Mendelssohn - 1847
- Aaron Copland - 1990
  Franz Schubert - 1828
- Giuseppe Verdi - 1901
- Maurice Ravel - 1937
- Dmitri Shostakovich - 1975
- Sergei Rachmaninoff - 1943
- Arnold Schoenberg - 1951
- George Gershwin - 1937
+ Felix Mendelssohn - 1847
+ Frederic Chopin - 1849
  Robert Schumann - 1856
- Leonard Bernstein - 1990
- Bela Bartok - 1945
- Antonin Dvorak - 1904
- Antonio Vivaldi - 1741
- Edvard Grieg - 1907
- Camille Saint-Saens - 1921
- Henry Purcell - 1695
- Claudio Monteverdi - 1643
  Hector Berlioz - 1869
-
-
-
- Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: d
-
-
- Displaying Composer List
-
- Ludwig van Beethoven - 1827
- Wolfgang Amadeus Mozart - 1791
- Johann Sebastian Bach - 1750
- Frederic Chopin - 1849
- George Frideric Handel - 1759
- Franz Liszt - 1886
- Johannes Brahms - 1897
- Igor Stravinsky - 1971
- Pyotr Ilyich Tchaikovsky - 1893
- Claude Debussy - 1918
- Joseph Haydn - 1809
- Gustav Mahler - 1911
- Sergei Prokofiev - 1953
  Richard Wagner - 1883
- Giacomo Puccini - 1924
- Felix Mendelssohn - 1847
- Aaron Copland - 1990
- Franz Schubert - 1828
- Giuseppe Verdi - 1901
- Maurice Ravel - 1937
- Dmitri Shostakovich - 1975
- Sergei Rachmaninoff - 1943
- Arnold Schoenberg - 1951
- George Gershwin - 1937
- Robert Schumann - 1856
- Leonard Bernstein - 1990
- Bela Bartok - 1945
- Antonin Dvorak - 1904
- Antonio Vivaldi - 1741
- Edvard Grieg - 1907
- Camille Saint-Saens - 1921
- Henry Purcell - 1695
- Claudio Monteverdi - 1643
- Hector Berlioz - 1869
-
-
-
- Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: d
-
-
- Displaying Composer List
-
- Ludwig van Beethoven - 1827
- Wolfgang Amadeus Mozart - 1791
- Johann Sebastian Bach - 1750
- Frederic Chopin - 1849
- George Frideric Handel - 1759
  Franz Liszt - 1886
- Johannes Brahms - 1897
- Igor Stravinsky - 1971
  Pyotr Ilyich Tchaikovsky - 1893
- Claude Debussy - 1918
- Joseph Haydn - 1809
- Gustav Mahler - 1911
- Sergei Prokofiev - 1953
- Richard Wagner - 1883
- Giacomo Puccini - 1924
- Felix Mendelssohn - 1847
- Aaron Copland - 1990
- Franz Schubert - 1828
- Giuseppe Verdi - 1901
- Maurice Ravel - 1937
- Dmitri Shostakovich - 1975
- Sergei Rachmaninoff - 1943
- Arnold Schoenberg - 1951
- George Gershwin - 1937
- Robert Schumann - 1856
- Leonard Bernstein - 1990
- Bela Bartok - 1945
- Antonin Dvorak - 1904
- Antonio Vivaldi - 1741
- Edvard Grieg - 1907
- Camille Saint-Saens - 1921
- Henry Purcell - 1695
- Claudio Monteverdi - 1643
- Hector Berlioz - 1869
-
-
-
- Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: r
-
- Enter a composer's name to remove: Ludwig van Beethoven
-
-         Ludwig van Beethoven was successfully removed from the list
-
-
- Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: d
-
-
- Displaying Composer List
-
- Wolfgang Amadeus Mozart - 1791
- Johann Sebastian Bach - 1750
- Frederic Chopin - 1849
- George Frideric Handel - 1759
- Franz Liszt - 1886
  Johannes Brahms - 1897
- Igor Stravinsky - 1971
- Pyotr Ilyich Tchaikovsky - 1893
- Claude Debussy - 1918
- Joseph Haydn - 1809
- Gustav Mahler - 1911
- Sergei Prokofiev - 1953
- Richard Wagner - 1883
- Giacomo Puccini - 1924
- Felix Mendelssohn - 1847
- Aaron Copland - 1990
- Franz Schubert - 1828
  Giuseppe Verdi - 1901
- Maurice Ravel - 1937
- Dmitri Shostakovich - 1975
- Sergei Rachmaninoff - 1943
- Arnold Schoenberg - 1951
- George Gershwin - 1937
- Robert Schumann - 1856
- Leonard Bernstein - 1990
- Bela Bartok - 1945
  Antonin Dvorak - 1904
- Antonio Vivaldi - 1741
  Edvard Grieg - 1907
- Camille Saint-Saens - 1921
- Henry Purcell - 1695
- Claudio Monteverdi - 1643
- Hector Berlioz - 1869
-
-
-
- Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: r
-
- Enter a composer's name to remove: Hector Berlioz
-
-         Hector Berlioz was successfully removed from the list
-
-
- Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: d
-
-
- Displaying Composer List
-
- Wolfgang Amadeus Mozart - 1791
- Johann Sebastian Bach - 1750
- Frederic Chopin - 1849
- George Frideric Handel - 1759
- Franz Liszt - 1886
- Johannes Brahms - 1897
- Igor Stravinsky - 1971
- Pyotr Ilyich Tchaikovsky - 1893
- Claude Debussy - 1918
- Joseph Haydn - 1809
  Gustav Mahler - 1911
- Sergei Prokofiev - 1953
- Richard Wagner - 1883
- Giacomo Puccini - 1924
- Felix Mendelssohn - 1847
- Aaron Copland - 1990
- Franz Schubert - 1828
- Giuseppe Verdi - 1901
- Maurice Ravel - 1937
- Dmitri Shostakovich - 1975
- Sergei Rachmaninoff - 1943
- Arnold Schoenberg - 1951
- George Gershwin - 1937
- Robert Schumann - 1856
- Leonard Bernstein - 1990
- Bela Bartok - 1945
- Antonin Dvorak - 1904
- Antonio Vivaldi - 1741
- Edvard Grieg - 1907
+ Claude Debussy - 1918
  Camille Saint-Saens - 1921
- Henry Purcell - 1695
- Claudio Monteverdi - 1643
+ Giacomo Puccini - 1924
+ George Gershwin - 1937
+ Maurice Ravel - 1937
+ Sergei Rachmaninoff - 1943
+ Bela Bartok - 1945
+ Arnold Schoenberg - 1951
+ Sergei Prokofiev - 1953
+ Igor Stravinsky - 1971
+ Dmitri Shostakovich - 1975
+ Leonard Bernstein - 1990
+ Aaron Copland - 1990
 
+
+
+ Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: s
+
+ Enter a composer's name to search for: Aaron Copland
+
+         Aaron Copland was found in the list
 
 
  Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: r
@@ -360,64 +189,72 @@ void searchRec(LinkedList<Composer> &list) {
          Aaron Copland was successfully removed from the list
 
 
+ Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: r
+
+ Enter a composer's name to remove: Dmitri Shostakovich
+
+         Dmitri Shostakovich was successfully removed from the list
+
+
  Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: d
 
 
  Displaying Composer List
 
- Wolfgang Amadeus Mozart - 1791
- Johann Sebastian Bach - 1750
- Frederic Chopin - 1849
- George Frideric Handel - 1759
- Franz Liszt - 1886
- Johannes Brahms - 1897
- Igor Stravinsky - 1971
- Pyotr Ilyich Tchaikovsky - 1893
- Claude Debussy - 1918
- Joseph Haydn - 1809
- Gustav Mahler - 1911
- Sergei Prokofiev - 1953
- Richard Wagner - 1883
- Giacomo Puccini - 1924
- Felix Mendelssohn - 1847
- Franz Schubert - 1828
- Giuseppe Verdi - 1901
- Maurice Ravel - 1937
- Dmitri Shostakovich - 1975
- Sergei Rachmaninoff - 1943
- Arnold Schoenberg - 1951
- George Gershwin - 1937
- Robert Schumann - 1856
- Leonard Bernstein - 1990
- Bela Bartok - 1945
- Antonin Dvorak - 1904
- Antonio Vivaldi - 1741
- Edvard Grieg - 1907
- Camille Saint-Saens - 1921
- Henry Purcell - 1695
  Claudio Monteverdi - 1643
+ Henry Purcell - 1695
+ Antonio Vivaldi - 1741
+ Johann Sebastian Bach - 1750
+ George Frideric Handel - 1759
+ Wolfgang Amadeus Mozart - 1791
+ Joseph Haydn - 1809
+ Ludwig van Beethoven - 1827
+ Franz Schubert - 1828
+ Felix Mendelssohn - 1847
+ Frederic Chopin - 1849
+ Robert Schumann - 1856
+ Hector Berlioz - 1869
+ Richard Wagner - 1883
+ Franz Liszt - 1886
+ Pyotr Ilyich Tchaikovsky - 1893
+ Johannes Brahms - 1897
+ Giuseppe Verdi - 1901
+ Antonin Dvorak - 1904
+ Edvard Grieg - 1907
+ Gustav Mahler - 1911
+ Claude Debussy - 1918
+ Camille Saint-Saens - 1921
+ Giacomo Puccini - 1924
+ George Gershwin - 1937
+ Maurice Ravel - 1937
+ Sergei Rachmaninoff - 1943
+ Bela Bartok - 1945
+ Arnold Schoenberg - 1951
+ Sergei Prokofiev - 1953
+ Igor Stravinsky - 1971
+ Leonard Bernstein - 1990
 
+
+
+ Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: s Johann Seebastian Bach
+
+ Enter a composer's name to search for: Johann Seebastian Bach
+
+         Johann Seebastian Bach was not found in the list
 
 
  Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: s
 
- Enter a composer's name to search for: Aaron Copland
+ Enter a composer's name to search for: Johann Sebastian Bach
 
-         Aaron Copland was not found in the list
-
-
- Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: s
-
- Enter a composer's name to search for: Edvard Grieg
-
-         Edvard Grieg was found in the list
+         Johann Sebastian Bach was found in the list
 
 
  Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: r
 
- Enter a composer's name to remove: Edvard Grieg
+ Enter a composer's name to remove: Johann Sebastian Bach
 
-         Edvard Grieg was successfully removed from the list
+         Johann Sebastian Bach was successfully removed from the list
 
 
  Enter 's' to search, 'r' to remove, 'd' to display, or 'e' to exit: d
@@ -425,36 +262,37 @@ void searchRec(LinkedList<Composer> &list) {
 
  Displaying Composer List
 
- Wolfgang Amadeus Mozart - 1791
- Johann Sebastian Bach - 1750
- Frederic Chopin - 1849
- George Frideric Handel - 1759
- Franz Liszt - 1886
- Johannes Brahms - 1897
- Igor Stravinsky - 1971
- Pyotr Ilyich Tchaikovsky - 1893
- Claude Debussy - 1918
- Joseph Haydn - 1809
- Gustav Mahler - 1911
- Sergei Prokofiev - 1953
- Richard Wagner - 1883
- Giacomo Puccini - 1924
- Felix Mendelssohn - 1847
- Franz Schubert - 1828
- Giuseppe Verdi - 1901
- Maurice Ravel - 1937
- Dmitri Shostakovich - 1975
- Sergei Rachmaninoff - 1943
- Arnold Schoenberg - 1951
- George Gershwin - 1937
- Robert Schumann - 1856
- Leonard Bernstein - 1990
- Bela Bartok - 1945
- Antonin Dvorak - 1904
- Antonio Vivaldi - 1741
- Camille Saint-Saens - 1921
- Henry Purcell - 1695
  Claudio Monteverdi - 1643
+ Henry Purcell - 1695
+ Antonio Vivaldi - 1741
+ George Frideric Handel - 1759
+ Wolfgang Amadeus Mozart - 1791
+ Joseph Haydn - 1809
+ Ludwig van Beethoven - 1827
+ Franz Schubert - 1828
+ Felix Mendelssohn - 1847
+ Frederic Chopin - 1849
+ Robert Schumann - 1856
+ Hector Berlioz - 1869
+ Richard Wagner - 1883
+ Franz Liszt - 1886
+ Pyotr Ilyich Tchaikovsky - 1893
+ Johannes Brahms - 1897
+ Giuseppe Verdi - 1901
+ Antonin Dvorak - 1904
+ Edvard Grieg - 1907
+ Gustav Mahler - 1911
+ Claude Debussy - 1918
+ Camille Saint-Saens - 1921
+ Giacomo Puccini - 1924
+ George Gershwin - 1937
+ Maurice Ravel - 1937
+ Sergei Rachmaninoff - 1943
+ Bela Bartok - 1945
+ Arnold Schoenberg - 1951
+ Sergei Prokofiev - 1953
+ Igor Stravinsky - 1971
+ Leonard Bernstein - 1990
 
 
 
